@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="/stylesheets/style1.css">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<center><b><font size="5">Welcome back Member !!</center></font></b> 
+
+
+</br>
+</br>
+</br>
+<div id="logout">
+		<form id="logout" method="post" action="/logout">
+			<input type="image" src="/img/Logout.jpg" alt="Submit" value="Logout"
+				width="100" height="25"
+				style="position: fixed; top: 20px; left: 1101px;">
+		</form></div>
+
+<div align="center">
+<form action="/DisplayMovie" method="post">
+<input type="submit" id="displayPremiumMemberMovies" value="Display Movies"	onclick="submit()">
+
+</form>
+
+<form action="/EditPersonalInfo" method="post">
+<input type="submit" id="memberEditPersonalInfo" value="Edit Personal Info"	onclick="submit()">
+
+</form>
+
+<form action="/ViewCart" method="post">
+<input type="submit" id="viewCart" value="View Cart"	onclick="submit()">
+
+</form>
+
+<form action="/ViewOrderHistory" method="post">
+<input type="submit" id="viewOrderHistory" value="View Order History"	onclick="submit()">
+
+</form>
+
+<form action="/ReturnIssuedMovie" method="post">
+<input type="submit" id="returnIssuedMovie" value="Return Issued Movie"	onclick="submit()">
+
+</form>
+
+<form id='form4' method="post" action="/ProceedToPayment">
+<input type="button" id="{{cartId}}" class="button"	value="Generate Bill" onclick="submit()"/>
+
+</form>
+
+
+
+</div>
+</body>
+</html>

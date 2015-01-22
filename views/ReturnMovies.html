@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="/stylesheets/style1.css">
+<script type="text/javascript"	src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="ReturnMovie.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+<div id="logout">
+		<form id="logout" method="post" action="/logout">
+			<input type="image" src="/img/Logout.jpg" alt="Submit" value="Logout"
+				width="100" height="25"
+				style="position: fixed; top: 20px; left: 1101px;">
+		</form></div>
+ <div align="left">
+		 {{#if membertype}}
+		<form id="home" method="get" action="/PremiumMemberHome">
+			<input type="submit"  value="Premium Member Home"
+				width="100" height="25"
+				>
+		</form>
+		</div>
+		
+		{{else}}
+		
+		<form id="home" method="get" action="/Home">
+			<input type="submit"  value="Simple Member Home"
+				width="100" height="25"
+				>
+		</form>
+		</div>{{/if}}
+<form id='form9' method="post" action="">
+			</br>
+			</br>
+
+
+			<table border="1" width="900px" align="center" id="movies">
+			 <thead>
+				<tr>
+					<th>MovieId</th>
+					<th>Movie Name</th>
+					<th>Movie Banner</th>
+					<th>Release Date</th>
+					<th>Rent Amount</th>
+					<th>Category</th>
+					<th>Issue Date</th>
+					<th>Action</th>
+				</tr></thead>
+				<tbody>
+				{{#each IssuedHistory}}
+				<tr id="{{movieId}}">
+					<td>{{movieId}}</td>
+					<td>{{movieName}}</td>
+					<td>{{movieBanner}}</td>
+					<td>{{releaseDate}}</td>
+					<td>{{rentAmount}}</td>
+					<td>{{category}}</td>
+					<td>{{issueDate}}</td>
+					<td><input type="button" id="{{movieId}}" class="button"
+						value="Return" /></td>
+				</tr>
+				{{/each}}
+				</tbody>
+			</table>
+			</br>
+			</br>
+		</form>
+
+
+</body>
+</html>

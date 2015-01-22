@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Payment</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="/stylesheets/style1.css">
+
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  
+  <!-- Load jQuery and the validate plugin -->
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+<!-- jQuery Form Validation code -->
+  
+  
+
+</head>
+
+<body>
+	</br>
+	<div id="logout">
+		<form id="logout" method="post" action="/logout">
+			<input type="image" src="/img/Logout.jpg" alt="Submit" value="Logout"
+				width="100" height="25"
+				style="position: fixed; top: 20px; left: 1101px;">
+		</form></div>
+		 <div align="left">
+		 {{#if membertype}}
+		<form id="home" method="get" action="/PremiumMemberHome">
+			<input type="submit"  value="Premium Member Home"
+				width="100" height="25"
+				>
+		</form>
+		</div>
+		
+		{{else}}
+		
+		<form id="home" method="get" action="/Home">
+			<input type="submit"  value="Simple Member Home"
+				width="100" height="25"
+				>
+		</form>
+		</div>
+		
+		{{/if}}
+
+
+
+		<center>
+			<h2>Bill Generated for User</h2>
+		</center>
+		</center>
+
+		</br>
+		</br>
+		<div>
+			<form id="bill" method="post" >
+			
+			<table border="1" width="900px" align="center" id="movies">
+			 <thead>
+				<tr>
+					<th>MemberId</th>
+					<th>Issue Date</th>
+					<th>Total Quantity</th>
+					<th>Total Price</th>
+				</tr></thead>
+				<tbody>
+				<tr id="{{memberId}}">
+					<td>{{memberId}}</td>
+					<td>{{issueDate}}</td>
+					<td>{{totalQuantity}}</td>
+					<td>{{totalPrice}}</td>
+				</tr>
+				
+			
+			
+			
+			</form>
+			
+			{{#if membertype}}
+		<tr id="{{memberId}}">
+					<td>Monthly Subscription Fees</td>
+					<td></td>
+					<td></td>
+					<td>300</td>
+				</tr>
+				
+				<tr id="{{memberId}}">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>{{premcost}}</td>
+				</tr>
+		</div>
+		
+		{{else}}
+		
+		
+		
+		
+		{{/if}}
+		
+		</tbody>
+		
+		</table>
+		
+		
+		
+		</div>
+
+		</br>
+		</br>
+		</br>
+		<div align="center" position:absolute;
+top: 166px;
+left: 483px;>
+
+			
+
+
+
+		</div>
+</body>
+</html>

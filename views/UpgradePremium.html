@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="/stylesheets/style1.css">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="logout">
+		<form id="logout" method="post" action="/logout">
+			<input type="image" src="/img/Logout.jpg" alt="Submit" value="Logout"
+				width="100" height="25"
+				style="position: fixed; top: 20px; left: 1101px;">
+		</form></div>
+		 <div align="left">
+		 {{#if membertype}}
+		<form id="home" method="get" action="/PremiumMemberHome">
+			<input type="submit"  value="Premium Member Home"
+				width="100" height="25"
+				>
+		</form>
+		</div>
+		
+		{{else}}
+		
+		<form id="home" method="get" action="/Home">
+			<input type="submit"  value="Simple Member Home"
+				width="100" height="25"
+				>
+		</form>
+		</div>
+		
+		{{/if}}
+
+<h3><center> You have been upgraded to premium. Please sign In again !! </center></h3>
+<div id="logout">
+		<form id="logout" method="post" action="/logout">
+			<input type="image" src="/img/Logout.jpg" alt="Submit" value="Logout"
+				width="100" height="25"
+				style="position: fixed; top: 20px; left: 1101px;">
+		</form>
+		</br>
+		</br>
+		</br>
+	</div>
+</body>
+</html>

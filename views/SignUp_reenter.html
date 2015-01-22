@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="/stylesheets/style1.css">
+<title>SignUp</title>
+
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  
+  <link href="runnable.css" rel="stylesheet" />
+  <!-- Load jQuery and the validate plugin -->
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+   
+ <!-- jQuery Form Validation code -->
+  <script>
+  
+  // When the browser is ready...
+
+ 
+
+
+
+
+
+  $(function() {
+
+jQuery.validator.addMethod("isvalidphone", function(value) {
+
+	    //var matchArr = value.match(/^[01]?[- .]?(\([2-9]\d1980\)|[2-9]\d1980)[- .]?\d732[- .]?\d{4}$/);
+
+var matchArr = value.match(/^(\d{3})-?\d{3}-?\d{4}$/);
+	    var numDashes = value.split('-').length - 1;
+
+	 
+	    if (matchArr == null || numDashes == 1 || (parseInt(matchArr[1],10)==0)) {
+
+
+	 
+	    //if (matchArr == null ) {
+	        return false;
+	    }
+	    else {
+	        return true;
+	    }
+	}, "Invalid Phone No.");
+
+
+
+jQuery.validator.addMethod("isstate", function(value) {
+    var states = [
+        "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
+        "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+        "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+        "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+        "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY",
+        "AS", "DC", "FM", "GU", "MH", "MP", "PR", "PW", "VI"
+    ];// of course you will need to add more
+    var in_array = $.inArray(value.toUpperCase(), states);
+    if (in_array == -1) {
+        return false;
+    }else{
+        return true;
+    }
+}, "Data provided is not a valid state");
+
+jQuery.validator.addMethod("isvalidSSN", function(value) {
+
+	    var matchArr = value.match(/^(\d{3})-?\d{2}-?\d{4}$/);
+	    var numDashes = value.split('-').length - 1;
+	 
+	    if (matchArr == null || numDashes == 1 || (parseInt(matchArr[1],10)==0)) {
+	        return false;
+	    }
+	    else {
+	        return true;
+	    }
+	}, "Invalid SSN");
+
+jQuery.validator.addMethod("isvalidzip", function(value) {
+
+	    //var matchArr = value.match(/^(\d{3})-?\d{2}-?\d{4}$/);
+	    //var numDashes = value.split('-').length - 1;
+
+var matchArr= value.match(/^(\d{5}-\d{4}|\d{5}|\d{9})$|^([a-zA-Z]\d[a-zA-Z] \d[a-zA-Z]\d)$/);
+	 
+	    if (matchArr == null ) {
+	        return false;
+	    }
+	    else {
+	        return true;
+	    }
+	}, "Invalid ZIP code!");
+	
+	jQuery.validator.addMethod("isletterOnly", function(value) {
+ 
+ 		 var matchArr = value.match(/^[a-z]+$/);
+	    if (matchArr == null) {
+	        return false;
+	    }
+	    else {
+	        return true;
+	    }
+	}, "Invalid username input - Enter Only characters");
+
+	 
+
+  
+    // Setup form validation on the #register-form element
+    $("#register-form").validate({
+    
+        // Specify the validation rules
+        rules: {
+            firstName: {required:true, 
+            minlength: 2,},
+            lastName: {required:true, 
+            minlength: 2,},
+            
+             address: {required:true, 
+            minlength: 2,},
+            
+            
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+                required: true,
+                minlength: 5
+            },
+            
+            Numbers:{
+            required: true,
+      		digits: true,
+                     },
+              creditcard:{
+              required: true,
+      		creditcard: true,
+      		 //minlength: 16,
+			 //maxlength: 16,
+      		//digits: true,
+      		},    
+            agree: "required",
+state:{
+              required: true,
+      		//creditcard: true,
+      		 minlength: 2,
+			 maxlength: 2,
+      		
+      		},   
+ssn:{
+required: true,
+
+}, 
+
+zipcode:{
+required: true,
+},
+
+phone:{
+required: true,
+},
+
+city:{
+required: true,
+minlength : 2,
+},
+
+
+
+
+
+        },
+        
+        // Specify the validation error messages
+        messages: {
+            firstName: "Please enter your first name",
+            lastName: "Please enter your last name",
+            
+            address : "Please enter the address!", 
+            password: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 5 characters long"
+            },
+            email: "Please enter a valid email address",
+            Numbers: "Please enter valid id  ",
+            creditcard : "Please enter number",
+ssn: "Please enter a valid SSN of the format: xxx-xx-xxxx",
+zipcode: "Please enter a valid zipcode!",
+phone: "Please enter a valid Phone No!",
+city: "Please enter the city!",
+
+state: "Enter a valid State!", 
+
+               
+             agree: "Please accept our policy"
+        },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+  });
+
+  
+  </script>
+
+
+
+
+</head>
+<body>
+	<center>
+		<h2>Welcome to Video Library Management System!</h2>
+	</center>
+	<div id="signUp" style="position: absolute; top: 84px; left: 500px;">
+		<form name="signUp" method="Post" action="/SignUpCheck" id="register-form" novalidate="novalidate" form
+			autocomplete="off">
+			
+			
+  
+			
+			<table border="0" width="300px">
+				<tr>
+					<td><label>First Name </label></td>
+					<td><input type="text" name="firstName" /></td>
+				</tr>
+				<tr>
+					<td><label>Last Name</label></td>
+					<td><input type="text" name="lastName" /></td>
+				</tr>
+				<tr>
+					<td><label>Address</label></td>
+					<td><input type="text" name="address" /></td>
+				</tr>
+			
+				<tr>
+					<td><label>City</label></td>
+					<td><input type="text" name="city" /></td>
+				</tr>
+				<tr>
+					<td><label>State</label></td>
+					<td>
+					
+					
+					
+					<input type="text" name="state" value="Type a state abbreviation here" class="isstate" /><br/></td>
+					
+				</tr>
+				
+				<tr>
+					<td><label>ZipCode</label></td>
+					<td><input type="text" name="zipcode" class="isvalidzip" /></td>
+				</tr>
+				
+				<tr>
+					<td><label>Email</label></td>
+					<td><input type="text" name="email" /></td>
+				</tr>
+				
+				<tr>
+					<td><label>UserName</label></td>
+					<td><input type="text" name="userName" class="isletterOnly" /></td><font color="red">{{Error}}</font>
+				</tr>
+				<tr>
+					<td><label>Password</label></td>
+					<td><input type="password" name="password" /></td>
+				</tr
+				<tr>
+					<td><label>Premium Member</label></td>
+					<td><input type="checkbox" name="premiumMember" /></td>
+				</tr>
+				
+				<tr>
+					<td><input type="submit" value="SignUp"></td>
+					<td><input type="reset" value="Reset"></td>
+				</tr>
+			</table>
+		</form>
+
+	</div>
+</body>
+</html>

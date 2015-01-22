@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="/stylesheets/style1.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+
+
+<script type="text/javascript" src="/js/jquery.dataTables.js"><</script>
+<script type="text/javascript" src="/js/jquery.jeditable.js"><</script>
+ <script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				/* Init DataTables */
+				var oTable = $('#member').dataTable();
+				
+				/* Apply the jEditable handlers to the table */
+				oTable.$('td').editable( '/UpdatePersonalInfo', {
+					"callback": function( sValue, y ) {
+						 
+				            oTable.fnDraw();
+						
+					},
+					"submitdata": function ( value, settings ) {
+						return {
+							"row_id": this.parentNode.getAttribute('id'),
+							"column": oTable.fnGetPosition( this )[2]
+						};
+					},
+					"height": "14px",
+					"width": "100%"
+				} );
+			} );
+		</script>
+<title>{{title}}</title>
+</head>
+<body>
+<div id="logout">
+		<form id="logout" method="post" action="/logout">
+			<input type="image" src="/img/Logout.jpg" alt="Submit" value="Logout"
+				width="100" height="25"
+				style="position: fixed; top: 20px; left: 1101px;">
+		</form></div>
+		 <div align="left">
+		 {{#if membertype}}
+		<form id="home" method="get" action="/PremiumMemberHome">
+			<input type="submit"  value="Premium Member Home"
+				width="100" height="25"
+				>
+		</form>
+		</div>
+		
+		{{else}}
+		
+		<form id="home" method="get" action="/Home">
+			<input type="submit"  value="Simple Member Home"
+				width="100" height="25"
+				>
+		</form>
+		</div>
+		
+		{{/if}}
+
+<form id='form2' method="post" action="/SaveMovies">
+			</br>
+			</br>
+
+
+			<table border="1" width="900px" align="center" id="member">
+			 <thead>
+				<tr>
+					<th>MemberId</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Address</th>
+					<th>City</th>
+					<th>State</th>
+					<th>ZipCode</th>
+					<th>Email</th>
+				</tr></thead>
+				<tbody>
+				{{#each PersonalInfoResults}}
+				<tr id="{{memberId}}">
+					<td>{{memberId}}</td>
+					<td>{{firstName}}</td>
+					<td>{{lastName}}</td>
+					<td>{{address}}</td>
+					<td>{{city}}</td>
+					<td>{{state}}</td>
+					<td>{{zipcode}}</td>
+					<td>{{email}}</td>
+				</tr>
+				{{/each}}
+				</tbody>
+			</table>
+			</br>
+			</br>
+		</form>
+</body>
+</html>

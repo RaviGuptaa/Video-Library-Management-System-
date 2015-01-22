@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="/stylesheets/style1.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script type="text/javascript" src="ApproveTheRequest.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="logout">
+		<form id="logout" method="post" action="/logout">
+			<input type="image" src="/img/Logout.jpg" alt="Submit" value="Logout"
+				width="100" height="25"
+				style="position: fixed; top: 20px; left: 1101px;">
+		</form></div>
+		 <div align="left">
+		<form id="home" method="get" action="/AdminHome">
+			<input type="submit"  value="AdminHome"
+				width="100" height="25"
+				>
+		</form>
+		</div>
+
+
+Hi i  am going to issue the movie to the member
+
+<form action="/RetrieveMovieToMember" method="post">
+Member Id: <input type="text" name="memberId" id="memberId" />
+<input type="submit" id="IssueMovieToMovie" value="Issue Movie To Members"	onclick="submit()">
+
+</form>
+
+
+
+<form id='form2' method="post" action="/SaveMovies">
+			</br>
+			</br>
+
+
+			<table border="1" width="900px" align="center" id="movies">
+			 <thead>
+				<tr>
+					<th>MovieId</th>
+					<th>Member Id</th>
+					<th>Rent Amount</th>
+					<th>Quantity</th>
+					<th>Action</th>
+				</tr></thead>
+				<tbody>
+				{{#each memberResults}}
+				<tr id="{{movieId}}">
+					<td>{{movieId}}</td>
+					<td>{{memberId}}</td>
+					<td>{{price}}</td>
+					<td>{{quantity}}</td>
+					<td><input type="button" id="{{memberId}}" class="button" value="Approve The Request" /></td>
+				</tr>
+				{{/each}}
+				</tbody>
+			</table>
+			</br>
+			</br>
+		</form>
+
+
+</body>
+</html>

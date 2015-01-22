@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="/stylesheets/style1.css">
+<title>LogIN</title>
+</head>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  
+  <link href="runnable.css" rel="stylesheet" />
+  <!-- Load jQuery and the validate plugin -->
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+
+	<script>
+	
+	
+	
+	 $(function() {
+	
+	$("#register-form").validate({
+    
+        // Specify the validation rules
+        rules: {
+            userName: {
+            required:true, 
+           },
+            
+            Password: {
+            required:true, 
+            },
+            
+                       },
+        
+        // Specify the validation error messages
+        messages: {
+            
+            
+            userName: {
+                required: "Please enter Name",
+                   },
+               Password: {
+                required: "Please enter Password",
+                     },
+                                               
+            },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+  });
+	
+ </script>
+</head>
+<body>
+	
+	<div style='position:absolute;z-index:0;left:0;top:0;width:100%;height:100%'>
+  <img src="/img/library.jpg" style='width:100%;height:100%;opacity:1.0;' alt='[]' />
+
+	
+
+	<div style="position: fixed; top: 50px; left: 850px; width: 270px; background-color: #9A9D9D;">
+
+			<form action="/SignIn" method="post" id="register-form" novalidate="novalidate" form
+			autocomplete="off">
+				<label><font color="#000000">UserName :</font></label> <input type="text" name="userName" /></br> <label><font color="#000000"> Pass Word  :</font></label> <input type="password" name="Password" /> 
+					</br>
+				<input type="submit" value="LogIn" />
+
+			
+			<a href="/SignUP"><font color="#000000">SignUp</font></a></form>
+		</div>
+		
+		</div>
+		
+</body>
+
+
+</html>

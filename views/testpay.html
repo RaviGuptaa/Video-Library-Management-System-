@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="/stylesheets/style1.css">
+<title>Payment</title>
+
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  
+  <link href="runnable.css" rel="stylesheet" />
+  <!-- Load jQuery and the validate plugin -->
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+   
+ <!-- jQuery Form Validation code -->
+
+  
+  <script>
+  
+  
+  
+  $(function() {
+  
+  jQuery.validator.addMethod("isletterOnly", function(value) {
+ 
+ 		 var matchArr = value.match(/^[a-z]+$/);
+	    if (matchArr == null) {
+	        return false;
+	    }
+	    else {
+	        return true;
+	    }
+	}, "Invalid username input - Enter Only characters");
+	
+	jQuery.validator.addMethod("isNumberOnly", function(value) {
+ 
+ 		 var matchArr = value.match(/^[0-9]+$/);
+	    if (matchArr == null) {
+	        return false;
+	    }
+	    else {
+	        return true;
+	    }
+	}, "Invalid username input - Enter Only digits");
+  
+  
+ $("#register-form1").validate({
+    
+        // Specify the validation rules
+        rules: {
+        
+        cardHolderName: {required:true, 
+            minlength: 5,
+            },
+            
+            cardNumber: {required:true, 
+			minlength: 16,
+			maxlength: 16,},
+        
+        	cvv:{
+			required: true,
+			minlength: 3,
+			maxlength: 3,
+			},
+			
+			},
+			
+			 messages: {
+			 
+            cardHolderName:
+            {
+            required: "Please enter your card Holder Name",
+            },
+            
+            cardNumber:{
+            required: "Please enter your card Number",
+            minlength: "Invalid Card number: Enter 16 digits",
+            maxlength: "Invalid Card number: Enter 16 digits",
+            },
+            
+            cvv:{
+            required: "Please enter your CVV number",
+            minlength: "Invalid CVV number",
+            maxlength: "Invalid CVV number",
+            },
+            
+             },
+        
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+  });
+            
+   </script>         
+ 
+
+</head>
+
+<body>
+
+
+
+		<div align="center" position:absolute;
+top: 166px;
+left: 483px;>
+
+			<form  action="/SubmitPayment" method="post" id="register-form1" novalidate="novalidate" form
+			autocomplete="off">
+				<table>
+					<tr>
+						<a href="#"><img title="card_logo"
+							src="http://www.free-credit-card-logos.com/mc_ms_vs_accpt_h_023_gif.gif"
+							width="113" height="23" border="0" /></a>
+						</br>
+					</tr>
+					<tr>
+						<td><label>Name Of Card Holder1:</label></td>
+						<td><input type="text" name="cardHolderName" class="isletterOnly" /></td>
+					</tr>
+					<tr>
+						<td><label>Card Number :</label></td>
+						<td><input type="text" name="cardNumber" class="isNumberOnly" /></td>
+					</tr>
+					<tr>
+						<td><label>CVV :</label></td>
+						<td><input type="text" name="cvv" class="isNumberOnly" /></td>
+					</tr>
+					<tr>
+						<td><label>Expiry Date :</label>
+						<td><SELECT NAME="CCExpiresMonth">
+								<OPTION VALUE="" SELECTED>--Month--
+								<OPTION VALUE="01">January (01)
+								<OPTION VALUE="02">February (02)
+								<OPTION VALUE="03">March (03)
+								<OPTION VALUE="04">April (04)
+								<OPTION VALUE="05">May (05)
+								<OPTION VALUE="06">June (06)
+								<OPTION VALUE="07">July (07)
+								<OPTION VALUE="08">August (08)
+								<OPTION VALUE="09">September (09)
+								<OPTION VALUE="10">October (10)
+								<OPTION VALUE="11">November (11)
+								<OPTION VALUE="12">December (12)
+						</SELECT> / <SELECT NAME="CCExpiresYear">
+								<OPTION VALUE="" SELECTED>--Year--
+								<OPTION VALUE="14">2014
+								<OPTION VALUE="15">2015
+								<OPTION VALUE="16">2016
+								<OPTION VALUE="17">2017
+						</SELECT></td>
+					</tr>
+
+
+
+				</table>
+				<input type="submit" value="Submit" />
+
+			</form>
+
+
+
+
+		</div>
+</body>
+</html>
